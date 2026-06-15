@@ -1,10 +1,9 @@
-﻿Console.WriteLine("Informe a senha: ");
-string senha = Console.ReadLine();
-if (senha == "1234")
+﻿Console.WriteLine("Informe uma nota de 0 a 10: ");
+float nota = float.Parse(Console.ReadLine());
+while (nota < 0 || nota > 10)
 {
-    Console.WriteLine("Acesso permitido");
+        Console.WriteLine("Informe uma nota de 0 a 10: ");
+        nota = float.Parse(Console.ReadLine());
 }
-else
-{
-    Console.WriteLine("Acesso negado");
-}
+Console.WriteLine("Nota válida!");
+Console.WriteLine("Nota registrada: " + nota);
