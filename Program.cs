@@ -1,45 +1,56 @@
-﻿
-        float saldo, valor;
-        int operacao;
+﻿using System;
 
-        Console.Write("Informe o saldo inicial: R$ ");
-        saldo = float.Parse(Console.ReadLine());
+class Program
+{
+    static void Main()
+    {
+        int estoque, quantidade, operacao;
+
+        Console.Write("Informe a quantidade inicial em estoque: ");
+        estoque = int.Parse(Console.ReadLine());
 
         do
         {
             Console.WriteLine("\nEscolha a operação:");
-            Console.WriteLine("1 - Entrada de dinheiro");
-            Console.WriteLine("2 - Saída de dinheiro");
-            Console.WriteLine("3 - Encerrar");
+            Console.WriteLine("1 - Entrada de produtos");
+            Console.WriteLine("2 - Saída de produtos");
+            Console.WriteLine("3 - Consultar estoque");
+            Console.WriteLine("4 - Encerrar");
 
             operacao = int.Parse(Console.ReadLine());
 
             if (operacao == 1)
             {
-                Console.Write("Informe o valor da movimentação: R$ ");
-                valor = float.Parse(Console.ReadLine());
+                Console.Write("Informe a quantidade movimentada: ");
+                quantidade = int.Parse(Console.ReadLine());
 
-                saldo += valor;
+                estoque += quantidade;
 
-                Console.WriteLine("Entrada registrada. Saldo atual: R$ " + saldo);
+                Console.WriteLine("Entrada registrada. Estoque atual: " + estoque);
             }
             else if (operacao == 2)
             {
-                Console.Write("Informe o valor da movimentação: R$ ");
-                valor = float.Parse(Console.ReadLine());
+                Console.Write("Informe a quantidade movimentada: ");
+                quantidade = int.Parse(Console.ReadLine());
 
-                if (valor <= saldo)
+                if (quantidade <= estoque)
                 {
-                    saldo -= valor;
+                    estoque -= quantidade;
 
-                    Console.WriteLine("Saída registrada. Saldo atual: R$ " + saldo);
+                    Console.WriteLine("Saída registrada. Estoque atual: " + estoque);
                 }
                 else
                 {
-                    Console.WriteLine("Saldo insuficiente.");
+                    Console.WriteLine("Quantidade insuficiente em estoque.");
                 }
             }
+            else if (operacao == 3)
+            {
+                Console.WriteLine("Estoque atual: " + estoque);
+            }
 
-        } while (operacao != 3);
+        } while (operacao != 4);
 
-        Console.WriteLine("Saldo final: R$ " + saldo);
+        Console.WriteLine("Estoque final: " + estoque);
+    }
+}
