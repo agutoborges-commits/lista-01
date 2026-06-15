@@ -1,23 +1,45 @@
 ﻿
-        int quantidadeClientes;
-        int tempo;
-        int tempoTotal = 0;
-        float tempoMedio;
+        float saldo, valor;
+        int operacao;
 
-        Console.WriteLine("Informe a quantidade de clientes atendidos: ");
-        quantidadeClientes = int.Parse(Console.ReadLine());
+        Console.Write("Informe o saldo inicial: R$ ");
+        saldo = float.Parse(Console.ReadLine());
 
-        // Repetição para ler o tempo de cada atendimento
-        for (int i = 1; i <= quantidadeClientes; i++)
+        do
         {
-            Console.WriteLine("Informe o tempo do atendimento: ");
-            tempo = int.Parse(Console.ReadLine());
+            Console.WriteLine("\nEscolha a operação:");
+            Console.WriteLine("1 - Entrada de dinheiro");
+            Console.WriteLine("2 - Saída de dinheiro");
+            Console.WriteLine("3 - Encerrar");
 
-            tempoTotal += tempo;
-        }
+            operacao = int.Parse(Console.ReadLine());
 
-        // Calcula a média
-        tempoMedio = (float)tempoTotal / quantidadeClientes;
+            if (operacao == 1)
+            {
+                Console.Write("Informe o valor da movimentação: R$ ");
+                valor = float.Parse(Console.ReadLine());
 
-        Console.WriteLine("Tempo total de atendimento: " + tempoTotal + " minutos");
-        Console.WriteLine("Tempo médio por cliente: " + tempoMedio + " minutos");
+                saldo += valor;
+
+                Console.WriteLine("Entrada registrada. Saldo atual: R$ " + saldo);
+            }
+            else if (operacao == 2)
+            {
+                Console.Write("Informe o valor da movimentação: R$ ");
+                valor = float.Parse(Console.ReadLine());
+
+                if (valor <= saldo)
+                {
+                    saldo -= valor;
+
+                    Console.WriteLine("Saída registrada. Saldo atual: R$ " + saldo);
+                }
+                else
+                {
+                    Console.WriteLine("Saldo insuficiente.");
+                }
+            }
+
+        } while (operacao != 3);
+
+        Console.WriteLine("Saldo final: R$ " + saldo);
