@@ -16,4 +16,9 @@ public class Calculadora
     {
         return (b * -1 + Math.Sqrt(delta)) / (2 * a);
     }
+
+    public int subtrair(int a, int b, int c)
+    {
+        return a - b - c;
+    }
 }
